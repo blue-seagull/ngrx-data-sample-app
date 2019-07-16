@@ -7,10 +7,12 @@ import {entityConfig} from './entity-metadata';
 import {EntityDataModule} from '@ngrx/data';
 import {EffectsModule} from '@ngrx/effects';
 import {AppEffects} from './app.effects';
+import { HeroesComponent } from './hero/heroes/heroes.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HeroesComponent
   ],
   imports: [
     BrowserModule,
