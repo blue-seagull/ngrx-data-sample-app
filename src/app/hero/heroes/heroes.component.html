@@ -1,2 +1,4 @@
 <p>Loading:{{loading$|async}}</p>
-<pre>{{heroes$|async|json}}</pre>
+<ul>
+  <li *ngFor="let hero of heroes$|async">{{hero.name}}</li>
+</ul>

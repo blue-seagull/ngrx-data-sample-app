@@ -7,7 +7,10 @@ import {entityConfig} from './entity-metadata';
 import {EntityDataModule} from '@ngrx/data';
 import {EffectsModule} from '@ngrx/effects';
 import {AppEffects} from './app.effects';
-import { HeroesComponent } from './hero/heroes/heroes.component';
+import {HeroesComponent} from './hero/heroes/heroes.component';
+import {HttpClientInMemoryWebApiModule} from 'angular-in-memory-web-api';
+import {InMemoryDataService} from './in-memory-data.service';
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -16,6 +19,13 @@ import { HeroesComponent } from './hero/heroes/heroes.component';
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
+    // The HttpClientInMemoryWebApiModule module intercepts HTTP requests
+    // and returns simulated server responses.
+    // Remove it when a real server is ready to receive requests.
+    HttpClientInMemoryWebApiModule.forRoot(
+      InMemoryDataService, {dataEncapsulation: false}
+    ),
     StoreModule.forRoot({}),
     EffectsModule.forRoot([AppEffects]),
     EntityDataModule.forRoot(entityConfig),
